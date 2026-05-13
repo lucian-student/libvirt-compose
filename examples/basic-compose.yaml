@@ -1,0 +1,25 @@
+networks:
+  - name: chroma_network
+    dhcp:
+      address: "10.10.0.1"
+      mask: "255.255.255.0"
+      ranges:
+        - start: "10.10.0.30"
+          end: "10.10.0.150"
+vms:
+  - name: control-plane
+    base_image: /var/lib/libvirt/images/debian-cloud-13.qcow2
+    networks:
+      - chroma_network
+    vcpu: 2
+    memory: 4Gi
+    disk_size: 20Gi
+  - count: 7
+    name_template: "worker_{id}"
+    base_image: /var/lib/libvirt/images/debian-cloud-13.qcow2
+    networks:
+      - chroma_network
+    vcpu: 2
+    memory: 6Gi
+    disk_size: 20Gi
+#Udajně není zaintegrovaný cloud-init, který by měl být zaintegrovaný
