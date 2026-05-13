@@ -4,7 +4,13 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "libvirt-python>=12.3.0",
+    "pydantic>=2.13.3",
+    "pyyaml>=6.0.3",
+    "rich>=15.0.0",
+    "typer>=0.25.1",
+]
 [tool.uv]
 # Rejection: Don't use any package version published after March 1st, 2026
 exclude-newer = "2026-05-05T00:00:00Z"
